@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript API Program without async & await</title>
+    </head>
+    <body>
+        <img src="" id="rainbow" width="1000px"/>
+        <script>
+            //fetching rainbow image from local folder with fetch keyword
+            //and convering into image into blob 
+            console.log('about to fetch the rainbow');
+            fetch('rainbow.jpg').then(response => {
+                console.log(response);
+                return response.blob();
+
+            //Blob won't suppor image so adding URL.createObjectURL() 
+            }).then(blob => {
+                console.log(blob);
+                document.getElementById('rainbow').src = URL.createObjectURL(blob);
+            }).catch(error => {
+                console.log("error!");
+                console.log(error);
+            //displaying error response if we get any error
+            //If we want get error change the filename into diff. eg-> rainbow1.jpg
+            });
+        </script>
+    </body>
+</html>
